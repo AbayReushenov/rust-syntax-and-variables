@@ -20,7 +20,16 @@ fn main() {
 
     println!("The value of the element at index {index} is: {element}");
 }
+// Корректный доступ к элементу массива
+// $ cargo run
+//    Compiling variables v0.1.0 (/home/aaaaa/rust/variables)
+//     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.58s
+//      Running `target/debug/variables`
+// Please enter an array index.
+// 4
+// The value of the element at index 4 is: 5
 
+// Некорректный доступ к элементу массива
 // $ cargo run
 //    Compiling variables v0.1.0 (/home/aaaaa/rust/variables)
 //     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.73s
