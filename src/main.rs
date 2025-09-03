@@ -1,10 +1,8 @@
 fn main() {
-    another_function(56);
+    print_labeled_measurement(5, 'h');
 }
 
-// В сигнатурах функций вы обязаны указывать тип каждого параметра.
-fn another_function(x: i8) {
-    println!("The value of x is: {x}");
+fn print_labeled_measurement(value: i32, unit_label: char) {
+    println!("The measurement is: {value}{unit_label}");
 }
-
-// The value of x is: 56
+    // The measurement is: 5h
