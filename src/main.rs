@@ -1,42 +1,21 @@
-use std::io;
-
 fn main() {
-    let a = [1, 2, 3, 4, 5];
+    let x = 5;
 
-    println!("Please enter an array index.");
+    let x = x + 1;
+    
+    // shadowing (переопределение переменных)
+    {
+        let x = x * 2;
+        println!("The value of x in the inner scope is: {x}");
+    }
 
-    let mut index = String::new();
-
-    io::stdin()
-        .read_line(&mut index)
-        .expect("Failed to read line");
-
-    let index: usize = index
-        .trim()
-        .parse()
-        .expect("Index entered was not a number");
-
-    let element = a[index];
-
-    println!("The value of the element at index {index} is: {element}");
+    println!("The value of x is: {x}");
 }
-// Корректный доступ к элементу массива
+
+
 // $ cargo run
 //    Compiling variables v0.1.0 (/home/aaaaa/rust/variables)
-//     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.58s
+//     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.76s
 //      Running `target/debug/variables`
-// Please enter an array index.
-// 4
-// The value of the element at index 4 is: 5
-
-// Некорректный доступ к элементу массива
-// $ cargo run
-//    Compiling variables v0.1.0 (/home/aaaaa/rust/variables)
-//     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.73s
-//      Running `target/debug/variables`
-// Please enter an array index.
-// 99
-
-// thread 'main' panicked at src/main.rs:19:19:
-// index out of bounds: the len is 5 but the index is 99
-// note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+// The value of x in the inner scope is: 12
+// The value of x is: 6
