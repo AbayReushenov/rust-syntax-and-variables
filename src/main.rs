@@ -1,29 +1,54 @@
 fn main() {
-    // tuple - кортеж;
-    let tup: (i32, f64, u8) = (500, 6.4, 1);
+    // array - массив;1
+    let a = [1, 2, 3, 4, 5];
 
-    let (x, y, z) = tup;
+    // array indexing by position
+    let first = a[0];
 
-    println!("The value of y is: {y}");
-    println!("The value of z is: {z}");
-    println!("The value of x is: {x}");
+    println!("The value of first is: {first}");
 
-    let x: (i32, f64, u8) = (500, 6.4, 1);
+    let months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
+    println!("The value of months is: {}", months.len());
+    println!("January is in the {}, it's the first position", months[0]);
 
-    // tuple indexing by position
-    let five_hundred = x.0;
+    let a2 = [3; 5];
+    println!("The value of a2 is: {}", a2[0]);
+    println!("The value of a2 is: {}", a2[1]);
+    println!("The value of a2 is: {}", a2[2]);
+    println!("The value of a2 is: {}", a2[3]);
+    println!("The value of a2 is: {}", a2[4]);
 
-    let six_point_four = x.1;
+    let a3 = [188, 288, 388, 488, 588];
 
-    let one = x.2;
+    let first = a3[0];
+    let second = a3[1];
+    println!("The value of first is: {}", first);
+    println!("The value of second is: {}", second);
 
-    println!("The value of five_hundred is: {five_hundred}");
-    println!("The value of six_point_four is: {six_point_four}");
-    println!("The value of one is: {one}");
+    // The value of first is: 188
+    // The value of second is: 288
+
+
 }
-// The value of y is: 6.4
-// The value of z is: 1
-// The value of x is: 500
-// The value of five_hundred is: 500
-// The value of six_point_four is: 6.4
-// The value of one is: 1
+
+// The value of first is: 1
+// The value of months is: 12
+// January is in the January, it's the first position
+// The value of a2 is: 3
+// The value of a2 is: 3
+// The value of a2 is: 3
+// The value of a2 is: 3
+// The value of a2 is: 3
