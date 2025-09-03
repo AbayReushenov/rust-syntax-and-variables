@@ -1,54 +1,32 @@
+use std::io;
+
 fn main() {
-    // array - массив;1
     let a = [1, 2, 3, 4, 5];
 
-    // array indexing by position
-    let first = a[0];
+    println!("Please enter an array index.");
 
-    println!("The value of first is: {first}");
+    let mut index = String::new();
 
-    let months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ];
-    println!("The value of months is: {}", months.len());
-    println!("January is in the {}, it's the first position", months[0]);
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line");
 
-    let a2 = [3; 5];
-    println!("The value of a2 is: {}", a2[0]);
-    println!("The value of a2 is: {}", a2[1]);
-    println!("The value of a2 is: {}", a2[2]);
-    println!("The value of a2 is: {}", a2[3]);
-    println!("The value of a2 is: {}", a2[4]);
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
 
-    let a3 = [188, 288, 388, 488, 588];
+    let element = a[index];
 
-    let first = a3[0];
-    let second = a3[1];
-    println!("The value of first is: {}", first);
-    println!("The value of second is: {}", second);
-
-    // The value of first is: 188
-    // The value of second is: 288
-
-
+    println!("The value of the element at index {index} is: {element}");
 }
 
-// The value of first is: 1
-// The value of months is: 12
-// January is in the January, it's the first position
-// The value of a2 is: 3
-// The value of a2 is: 3
-// The value of a2 is: 3
-// The value of a2 is: 3
-// The value of a2 is: 3
+// $ cargo run
+//     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.04s
+//      Running `target/debug/variables`
+// Please enter an array index.
+// 999
+
+// thread 'main' panicked at src/main.rs:19:19:
+// index out of bounds: the len is 5 but the index is 999
+// note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
