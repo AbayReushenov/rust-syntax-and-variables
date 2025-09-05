@@ -1,15 +1,14 @@
 fn main() {
-    let mut s = String::from("hello");
+    let reference_to_nothing = dangle();
 
-    let r1 = &s; // no problem
-    let r2 = &s; // no problem
-    println!("{r1} and {r2}");
-    // Variables r1 and r2 will not be used after this point.
+    println!("Test {}", reference_to_nothing)
+}
 
-    let r3 = &mut s; // no problem
-    println!("{r3}");
 
-    // ERROR
-    // println!("{r1}, {r2}, and {r3}");
-    //                ---- immutable borrow later used here
+// this function's return type contains a borrowed value, but there is no value for it to be borrowed from
+
+fn dangle() -> &String {
+    let s = String::from("hello");
+
+    &s
 }
