@@ -1,13 +1,25 @@
 fn main() {
     let s1 = String::from("hello");
 
-    let (s2, len) = calculate_length(s1);
+    // мы можем предоставить ссылку на значение String.
+    //  В отличие от указателя, ссылка гарантированно указывает на
+    // допустимое значение определённого типа в течение всего срока
+    // существования этой ссылки
+    // &s1 позволяет нам создать ссылку, которая ссылается на значение s1, но не владеет им.
+    let len = calculate_length(&s1);
 
-    println!("The length of '{s2}' is {len}.");
+    // Поскольку она не владеет им, значение, на которое она указывает, не будет удалено,
+    // когда ссылка перестанет использоваться.
+    println!("The length of '{s1}' is {len}.");
 }
 
-fn calculate_length(s: String) -> (String, usize) {
-    let length = s.len(); // len() returns the length of a String
-
-    (s, length)
+// мы передаём &s1 в calculate_length и в его определении используем &String, а не String
+fn calculate_length(s: &String) -> usize {
+    s.len()
 }
+// Here, s goes out of scope. But because s does not have ownership of what
+// it refers to, the String is not dropped.
+
+// Мы называем процесс создания ссылки заимствованием. Как и в реальной жизни,
+// если человек чем-то владеет, вы можете это у него позаимствовать.
+// Когда вы закончите, вы должны вернуть это законному владельцу.
