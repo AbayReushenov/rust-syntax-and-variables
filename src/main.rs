@@ -1,12 +1,27 @@
 fn main() {
-    let a = [10, 20, 30, 40, 50];
+    {                      // s is not valid here, since it's not yet declared
+        let s = "hello";   // s is valid from this point forward
 
-    for element in a {
-        println!("the value is: {element}");
+        // do stuff with s
+        println!("s {}", s)
     }
+    // this scope is now over, and s is no longer valid
+
+    let s = "hello 333";
+    println!("s {}", s);
+
+    // Оператор "Двойное двоеточие" :: позволяет использовать пространство имён
+    // данной конкретной функции from с типом String
+    let mut s3 = String::from("hello ");
+
+    println!("S#3 {}", s3);
+
+    s3.push_str(", world!"); // push_str() appends a literal to a Stri
+
+    println!("S#3 {}", s3);
+
+    // s hello
+    // s hello 333
+    // S#3 hello
+    // S#3 hello , world!
 }
-// the value is: 10
-// the value is: 20
-// the value is: 30
-// the value is: 40
-// the value is: 50
