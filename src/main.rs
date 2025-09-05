@@ -1,18 +1,15 @@
 fn main() {
     let mut s = String::from("hello");
-    println!("Наш пример {}", s);
 
-    // не может быть других ссылок на это же значение.
-    // Код, который пытается создать две изменяемые ссылки на s,
-    // завершится ошибкой:
-    change(&mut s);
+    let r1 = &s; // no problem
+    let r2 = &s; // no problem
+    println!("{r1} and {r2}");
+    // Variables r1 and r2 will not be used after this point.
 
-    println!("Наш пример {}", s);
+    let r3 = &mut s; // no problem
+    println!("{r3}");
+
+    // ERROR
+    // println!("{r1}, {r2}, and {r3}");
+    //                ---- immutable borrow later used here
 }
-
-fn change(some_string: &mut String) {
-    some_string.push_str(", world");
-}
-
-// Наш пример hello
-// Наш пример hello, world
