@@ -4,12 +4,19 @@ fn main() {
     takes_ownership(s);             // s's value moves into the function...
                                     // ... and so is no longer valid here
 
+    // Error! s недоступен
+    // println!("Данные {}", s)
+
     let x = 5;                      // x comes into scope
 
     makes_copy(x);                  // Because i32 implements the Copy trait,
                                     // x does NOT move into the function,
                                     // so it's okay to use x afterward.
 
+    println!("Данные x {}", x)
+    // hello
+    // 5
+    // Данные x 5
 } // Here, x goes out of scope, then s. However, because s's value was moved,
   // nothing special happens.
 
